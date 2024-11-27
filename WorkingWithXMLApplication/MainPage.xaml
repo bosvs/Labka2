@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WorkingWithXMLApplication.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="Transparent">
+
+    <!-- Add a gradient background -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#512BD4" Offset="0.0" />
+            <GradientStop Color="#4A90E2" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <StackLayout Spacing="20" Padding="20">
+
+            <!-- Styled button -->
+            <Button x:Name="InfoButton" 
+                    Clicked="OnInfoButtonClicked" 
+                    Text="General Information" 
+                    VerticalOptions="Start" 
+                    HorizontalOptions="End" 
+                    BackgroundColor="White"
+                    TextColor="#512BD4"
+                    FontSize="16"
+                    CornerRadius="10"/>
+
+            <!-- Modern label style -->
+            <Label x:Name="TitleText" 
+                   Text="Transforming XML Files"
+                   FontAttributes="Bold"
+                   FontSize="32"
+                   TextColor="White"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+
+            <!-- Updated button style -->
+            <Button x:Name="GettingFileButton" 
+                    Text="Select XML File" 
+                    Clicked="OnOpenFileButtonClicked"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" 
+                    BackgroundColor="#fd7e14"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="10"
+                    WidthRequest="220" />
+
+            <Label x:Name="PathToFile" Text="No file selected" 
+                   HorizontalOptions="Center" VerticalOptions="Center" 
+                   TextColor="White" FontSize="16" Padding="10,0,10,0"/>
+
+            
+
+            <!-- First Block of Filters -->
+            <Frame x:Name="FiltersMenuFirstBlock" IsVisible="False" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                <VerticalStackLayout Spacing="25">
+                    <Frame BackgroundColor="#512BD4" CornerRadius="10" Padding="15" HorizontalOptions="FillAndExpand">
+                        <Label Text="Fill in Filters for Search" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center"/>
+                    </Frame>
+
+                    <Grid RowSpacing="10" ColumnSpacing="15" RowDefinitions="*,*" ColumnDefinitions="*,*">
+                        <StackLayout Grid.Row="0" Grid.Column="0">
+                            <Label Text="Event Title" FontSize="18" TextColor="#374785"/>
+                            <Entry x:Name="EventNameFilter" Placeholder="Enter event name" BackgroundColor="White" VerticalOptions="FillAndExpand" FontSize="16" TextColor="#374785"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.Column="1">
+                            <Label Text="Organizer" FontSize="18" TextColor="#374785"/>
+                            <Entry x:Name="StudentNameFilter" Placeholder="Enter name or surname" BackgroundColor="White" VerticalOptions="FillAndExpand" FontSize="16" TextColor="#374785"/>
+                        </StackLayout>
+                        <!--
+                        <StackLayout Grid.Row="0" Grid.Column="2">
+                            <Label Text="Difficulty" FontSize="18" TextColor="#374785"/>
+                            <Picker x:Name="DifficultyPicker" BackgroundColor="White" VerticalOptions="FillAndExpand" TextColor="#374785"/>
+                        </StackLayout>
+                            -->
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Second Block of Filters -->
+            <Frame x:Name="FiltersMenuSecondBlock" IsVisible="False" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                <VerticalStackLayout Spacing="25">
+                    <Grid RowSpacing="10" ColumnSpacing="15" RowDefinitions="*,*" ColumnDefinitions="*,*,Auto">
+                        <StackLayout Grid.Row="0" Grid.Column="0">
+                            <Label Text="Place" FontSize="18" TextColor="#374785"/>
+                            <Picker x:Name="RoomPicker" BackgroundColor="White" VerticalOptions="FillAndExpand" TextColor="#374785"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.Column="1">
+                            <Label Text="Day" FontSize="18" TextColor="#374785"/>
+                            <Picker x:Name="DayPicker" BackgroundColor="White" VerticalOptions="FillAndExpand" TextColor="#374785"/>
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Row="0" Grid.Column="2">
+                            <Label Text="Time" FontSize="18" TextColor="#374785"/>
+                            <TimePicker x:Name="TimeFilter" Format="HH:mm" Time="0" BackgroundColor="White" VerticalOptions="FillAndExpand"  FontSize="16" TextColor="#374785" />
+                        </StackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Buttons with modern style -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15">
+                <Button x:Name="OpenScheduleButton"
+                        Text="Open Schedule" 
+                        Clicked="OnOpenScheduleButtonClicked"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#32CD32"
+                        TextColor="White"
+                        FontSize="18"
+                        CornerRadius="10"
+                        WidthRequest="200"
+                        IsVisible="False" />
+
+                <Button x:Name="HTMLTransorm" 
+                        Text="Transform to HTML" 
+                        Clicked="OnHTMLTransformButtonClicked"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#512BD4"
+                        TextColor="White"
+                        FontSize="18"
+                        CornerRadius="10"
+                        IsVisible="False"/>
+                
+                <Button x:Name="ClearFilters" 
+                        Text="Clear Filters" 
+                        Clicked="OnClearFiltersButtonClicked" 
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="Center"
+                        BackgroundColor="#FF6F61" 
+                        TextColor="White"
+                        FontSize="18"
+                        CornerRadius="10"
+                        IsVisible="False"/>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
